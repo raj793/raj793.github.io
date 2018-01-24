@@ -14,7 +14,7 @@ const layout = () => {
                 <a href="#">Contact</a>
                 </Navigation>
                 </Header>
-                <Drawer title="Title">
+                <Drawer title="Pokedex">
                 <Navigation>
                 <a href="#">Dummy</a>
                         </Navigation>
