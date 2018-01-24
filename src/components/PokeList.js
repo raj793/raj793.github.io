@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
+import '../styles/PokeCard.css';
 
 const PokeList = ({listOfPokemon}) => {
 
