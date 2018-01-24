@@ -1,9 +1,7 @@
-
+@import '~react-mdl/extra/material.css';
 .SingleCard {
-    padding-top: 10px;
     display: grid;
     float: right;
-    top: 20px;
     right: 50px;
     padding: 10px;
     padding-left: 10px;

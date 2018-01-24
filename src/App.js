@@ -30,6 +30,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Layout />
         <PokeList listOfPokemon={this.state.pokemon} />
       </div>
     );
