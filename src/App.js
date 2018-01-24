@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import './components/PokeList';
 import PokeList from './components/PokeList';
+import Layout from './components/Layout';
 
 class App extends Component {
 

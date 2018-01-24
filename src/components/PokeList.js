@@ -13,7 +13,7 @@ const PokeList = ({listOfPokemon}) => {
     })
 
     return(
-        <div>
+        <div className="grid-container">
         {pokemon}
         </div>
     );
