@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './components/PokeList';
+import PokeList from './components/PokeList';
 
 class App extends Component {
 
   constructor(props)
   {
     super(props);
+    this.state = {
+      pokemon: []
+    };
     this.loadPokemon = this.loadPokemon.bind(this);
   }
 
@@ -14,24 +19,17 @@ class App extends Component {
     let baseUrl = `https://pokeapi.co/api/v2/`;
     let pokeObj = await fetch(`${baseUrl}pokemon`);
     const json = await pokeObj.json();
-    console.log(json);
+    this.setState({ pokemon: json.results });
   }
 
   componentWillMount() {
     this.loadPokemon();
   }
 
-  tile(){
-    return(
-      <div>
-        
-      </div>
-    )
-  }
   render() {
     return (
       <div>
-
+        <PokeList listOfPokemon={this.state.pokemon} />
       </div>
     );
   }
