@@ -3,15 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-bootstrap/pagination": "^1.0.0",
     "antd": "^3.1.4",
     "es2017": "^0.0.0",
     "gh-pages": "^1.1.0",
     "material-components-web": "^0.28.0",
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
     "react-mdl": "^1.11.0",
-    "react-scripts": "1.1.0"
+    "react-scripts": "1.1.0",
+    "react-ultimate-pagination": "^1.1.0"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -4,6 +4,7 @@ import './App.css';
 import './components/PokeList';
 import PokeList from './components/PokeList';
 import Layout from './components/Layout';
+import { Col, Pagination } from 'react-bootstrap/lib/';
 
 class App extends Component {
 
@@ -11,27 +12,52 @@ class App extends Component {
   {
     super(props);
     this.state = {
-      pokemon: []
+      pokemon: [],
+      activePage: 0,
+      limit: 50,
+      offset: 0,
+      totalPages: 0
     };
     this.loadPokemon = this.loadPokemon.bind(this);
   }
 
   async loadPokemon() {
     let baseUrl = `https://pokeapi.co/api/v2/`;
-    let pokeObj = await fetch(`${baseUrl}pokemon`);
+    let pokeObj = await fetch(`${baseUrl}pokemon?limit=20`);
     const json = await pokeObj.json();
-    this.setState({ pokemon: json.results });
+    let pages = Math.round(json.count / this.state.limit);
+    this.setState({ 
+      pokemon: json.results,
+      totalPages: pages,
+      count: json.count
+      });
   }
 
   componentWillMount() {
     this.loadPokemon();
   }
 
+  handlePaginationSelect(event) {
+    let offset = this.state.limit * event;
+  }
+
   render() {
     return (
       <div>
-        <Layout />
+      <Layout />
+        <Col sm={8} md={10} smOffset={2} mdOffset={1}>
         <PokeList listOfPokemon={this.state.pokemon} />
+        </Col>
+
+        <Col sm={12} >
+          <Pagination
+            bsSize="small"
+            items={this.state.totalPages}
+            activePage={this.state.activePage}
+            onSelect={this.handlePaginationSelect}
+            />
+          </ Col>
+          
       </div>
     );
   }

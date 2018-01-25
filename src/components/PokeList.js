@@ -1,21 +1,22 @@
 import React from 'react';
+import { ListGroup, ListGroupItem, Col } from 'react-bootstrap/lib/';
 import { Card } from 'antd';
-import '../styles/PokeCard.css';
 
 const PokeList = ({listOfPokemon}) => {
 
     let pokemon = listOfPokemon.map((creature) =>{
         return(
-            <Card className="SingleCard" title={creature.name} style={{ width: 300 }} >
-            </Card>
+            <Col sm={6} md={4} key={creature.name}>
+                <ListGroupItem className='PokeList-item'>{creature.name}</ListGroupItem>
+            </Col>
         )
 
     })
 
     return(
-        <div className="grid-container">
+        <ListGroup>
         {pokemon}
-        </div>
+        </ListGroup>
     );
 }
 
