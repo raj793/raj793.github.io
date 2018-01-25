@@ -12,6 +12,10 @@
   padding-top: 300px;
 }
 
+.spinner {
+
+  color: aliceblue;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

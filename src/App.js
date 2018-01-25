@@ -6,6 +6,7 @@ import PokeList from './components/PokeList';
 import Layout from './components/Layout';
 import { Col } from 'react-bootstrap';
 import { Pagination } from 'antd';
+import Spinner from './components/Spinner';
 
 class App extends Component {
 
@@ -17,7 +18,8 @@ class App extends Component {
       activePage: 0,
       limit: 9,
       offset: 0,
-      totalPages: 0
+      totalPages: 0,
+      spin: "loading"
     };
     this.loadPokemon = this.loadPokemon.bind(this);
     this.handlePaginationSelect = this.handlePaginationSelect.bind(this);
@@ -30,7 +32,8 @@ class App extends Component {
     this.setState({ 
       pokemon: json.results,
       totalPages: pages,
-      count: json.count
+      count: json.count,
+      spin: "stop"
       });
   }
 
@@ -39,15 +42,17 @@ class App extends Component {
   }
 
   handlePaginationSelect(event) {
-    console.log(event);
     let offset = this.state.limit * event;
-    this.loadPokemon(`${this.props.baseUrl}pokemon?limit=${this.state.limit}&offset=${offset}`)
+    if(event === 1)
+    offset = 0;
+    this.loadPokemon(`${this.props.baseUrl}pokemon?limit=${this.state.limit}&offset=${offset}`);
   }
 
   render() {
     return (
       <div>
         <Layout />
+        <Spinner spin={this.state.spin} />
         <Col sm={8} md={10} smOffset={2} mdOffset={1}>
         <PokeList listOfPokemon={this.state.pokemon} />
         </Col>
