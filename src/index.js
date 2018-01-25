@@ -6,5 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import './styles/material.css';
 import 'react-mdl/extra/material.js';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+let baseUrl = 'https://pokeapi.co/api/v2/';
+
+ReactDOM.render(<App baseUrl={baseUrl} />, document.getElementById('root'));
 registerServiceWorker();

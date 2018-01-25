@@ -4,6 +4,14 @@
   text-align: center;
 }
 
+.pagination-main {
+  position: absolute;
+  left: 500px;
+  top: 0px;
+  z-index: 100;
+  padding-top: 300px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

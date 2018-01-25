@@ -4,7 +4,8 @@ import './App.css';
 import './components/PokeList';
 import PokeList from './components/PokeList';
 import Layout from './components/Layout';
-import { Col, Pagination } from 'react-bootstrap/lib/';
+import { Col } from 'react-bootstrap';
+import { Pagination } from 'antd';
 
 class App extends Component {
 
@@ -14,16 +15,16 @@ class App extends Component {
     this.state = {
       pokemon: [],
       activePage: 0,
-      limit: 50,
+      limit: 9,
       offset: 0,
       totalPages: 0
     };
     this.loadPokemon = this.loadPokemon.bind(this);
+    this.handlePaginationSelect = this.handlePaginationSelect.bind(this);
   }
 
-  async loadPokemon() {
-    let baseUrl = `https://pokeapi.co/api/v2/`;
-    let pokeObj = await fetch(`${baseUrl}pokemon?limit=20`);
+  async loadPokemon(url) {
+    let pokeObj = await fetch(url);
     const json = await pokeObj.json();
     let pages = Math.round(json.count / this.state.limit);
     this.setState({ 
@@ -34,30 +35,30 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.loadPokemon();
+    this.loadPokemon(`${this.props.baseUrl}pokemon?limit=${this.state.limit}&offset=${this.state.offset}`);
   }
 
   handlePaginationSelect(event) {
+
     let offset = this.state.limit * event;
+    this.loadPokemon(`${this.props.baseUrl}pokemon?limit=${this.state.limit}&offset=${offset}`)
   }
 
   render() {
     return (
       <div>
-      <Layout />
+        <Layout />
         <Col sm={8} md={10} smOffset={2} mdOffset={1}>
         <PokeList listOfPokemon={this.state.pokemon} />
         </Col>
-
-        <Col sm={12} >
+        <div className="pagination-main">
           <Pagination
-            bsSize="small"
-            items={this.state.totalPages}
-            activePage={this.state.activePage}
-            onSelect={this.handlePaginationSelect}
+          total = {this.state.totalPages}
+          onChange = {this.handlePaginationSelect}
+          curent = {this.state.activePage}
+          pageSize = {this.state.limit}
             />
-          </ Col>
-          
+          </div>
       </div>
     );
   }

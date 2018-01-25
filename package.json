@@ -12,7 +12,9 @@
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
+    "react-js-pagination": "^3.0.0",
     "react-mdl": "^1.11.0",
+    "react-paginate": "^5.0.0",
     "react-scripts": "1.1.0",
     "react-ultimate-pagination": "^1.1.0"
   },
