@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   handlePaginationSelect(event) {
-
+    console.log(event);
     let offset = this.state.limit * event;
     this.loadPokemon(`${this.props.baseUrl}pokemon?limit=${this.state.limit}&offset=${offset}`)
   }
@@ -57,6 +57,7 @@ class App extends Component {
           onChange = {this.handlePaginationSelect}
           curent = {this.state.activePage}
           pageSize = {this.state.limit}
+          hideOnSinglePage = {true}
             />
           </div>
       </div>

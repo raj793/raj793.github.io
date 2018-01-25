@@ -14,7 +14,7 @@ const layout = () => {
                 <Layout style={{background: 'url(https://wallpapercave.com/wp/JKJhFUk.jpg) center / cover'}}>
                 <Header transparent title="Pokedex" style={{color: 'white'}}>
                 <Navigation>
-                <a raised ripple onClick={info}>About</a>
+                <a onClick={info}>About</a>
                 </Navigation>
                 </Header>
                 <Drawer title="Pokedex">
