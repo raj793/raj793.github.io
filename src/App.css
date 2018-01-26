@@ -8,8 +8,8 @@
   position: absolute;
   left: 500px;
   top: 0px;
-  z-index: 100;
-  padding-top: 300px;
+  z-index: 1;
+  padding-top: 400px;
 }
 
 .spinner {
