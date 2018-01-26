@@ -4,11 +4,14 @@
   text-align: center;
 }
 
+.PokeList{
+  z-index: 100 !important;
+}
 .pagination-main {
   position: absolute;
   left: 500px;
   top: 0px;
-  z-index: 1;
+  z-index: 10;
   padding-top: 400px;
 }
 
