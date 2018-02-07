@@ -7,11 +7,12 @@
 .PokeList{
   z-index: 100 !important;
 }
+
 .pagination-main {
   position: absolute;
   left: 500px;
-  top: 0px;
-  z-index: 10;
+  top: 200px;
+  z-index: 100;
   padding-top: 400px;
 }
 

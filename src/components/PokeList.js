@@ -1,27 +1,21 @@
 import React from 'react';
 import { ListGroup, ListGroupItem, Col } from 'react-bootstrap/lib/';
 import '../styles/Pokelist.css';
+import CustomCard from './CustomCard';
 
 const PokeList = ({listOfPokemon, openModal}) => {
 
     let pokemon = listOfPokemon.map((creature) =>{
         return(
-            <Col sm={6} md={4} key={creature.name}>
-                <ListGroupItem className='PokeList-item' onClick={openModal.bind(null, creature)}>
-                {creature.name}
-                </ListGroupItem>
-            </Col>
+
+            <div key={creature.name} >
+                <CustomCard cardCaptionBold = {creature.name} />
+            </div>
         )
 
-    })
+    });
 
-    return(
-        <Col sm={8} md={10} smOffset={2} mdOffset={1} >
-        <ListGroup>
-        {pokemon}
-        </ListGroup>
-        </Col>
-  );
+    return pokemon;
 }
 
 export default PokeList;

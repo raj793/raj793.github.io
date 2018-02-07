@@ -1,29 +1,27 @@
 import React from 'react';
-import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
+import '../styles/layout-base.css';
+import '../styles/layout-grid.css';
 import { message } from 'antd';
-import { Button } from 'react-mdl';
+import logo from '../media/pokedex.png';
 
-const info = () => {
+const info = ({cardList}) => {
         message.info('Open Source Pokedex V0.4');
       };
 
-const layout = () => {
+const layout = ({customCardsList}) => {
 
         return(
-                <div style={{height: '100px', position: 'background'}}>
-                <Layout style={{background: 'url(https://wallpapercave.com/wp/JKJhFUk.jpg) center / cover'}}>
-                <Header transparent title="Pokedex" style={{color: 'white'}}>
-                <Navigation>
-                <a onClick={info}>About</a>
-                </Navigation>
-                </Header>
-                <Drawer title="Pokedex">
-                <Navigation>
-                <a href="#">Dummy</a>
-                        </Navigation>
-                        </Drawer>
-                        <Content />
-                </Layout>
+                <div className="main-container">
+                        <div className="header">
+                                <a className="btn-nav-about" onClick={info}>About</a>
+                                <img src={logo} className="nav-logo"/>
+                        </div>
+                        <div className="card-content">
+                                {customCardsList}
+                        </div>
+                        <div className="footer">
+                                Footer
+                        </div>
                 </div>
         );
     }

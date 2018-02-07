@@ -18,7 +18,7 @@ class App extends Component {
     this.state = {
       pokemon: [],
       activePage: 0,
-      limit: 15,
+      limit: 10,
       offset: 0,
       totalPages: 0,
       spin: true,
@@ -40,7 +40,7 @@ class App extends Component {
     this.setState({ 
       pokemon: json.results,
       totalPages: pages,
-      count: json.count-1,
+      count: json.count,
       spin: false
       });
   }
@@ -69,28 +69,13 @@ class App extends Component {
     },
     () => this.loadPokemon(`${this.props.baseUrl}pokemon?limit=${this.state.limit}&offset=0`));
   }
-  //<SelectItemsPerPageButtons options={[10,50,100,200]} selectedValue={this.state.limit} 
-  //allValue={this.state.count} onOptionSelected={this.handleLimitChange} />
 
   render() {
+
     return (
       <div>
-        <Layout />
+        <Layout customCardsList={<PokeList listOfPokemon={this.state.pokemon} />}/>
         <Spinner spin={this.state.spin} />
-        
-        <Col sm={8} md={10} smOffset={2} mdOffset={1}>
-        <PokeList listOfPokemon={this.state.pokemon} openModal={this.handleModalOpen} className="PokeList" />
-        </Col>
-        <div className="pagination-main">
-          <Pagination
-          total = {this.state.count}
-          onChange = {this.handlePaginationSelect}
-          curent = {this.state.activePage}
-          pageSize = {this.state.limit}
-          hideOnSinglePage = {true}
-            />
-            <PokemonModal closeModal={this.handleModalClose} showModal={this.state.showModal} />
-          </div>
       </div>
     );
   }
