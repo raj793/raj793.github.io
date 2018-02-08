@@ -4,10 +4,8 @@ import './App.css';
 import './components/PokeList';
 import PokeList from './components/PokeList';
 import Layout from './components/Layout';
-import { Col } from 'react-bootstrap';
 import { Pagination } from 'antd';
 import Spinner from './components/Spinner';
-import SelectItemsPerPageButtons from './components/SelectItemsPerPageButtons';
 import PokemonModal from './components/PokemonModal';
 
 class App extends Component {
@@ -43,6 +41,7 @@ class App extends Component {
       count: json.count,
       spin: false
       });
+      console.log(this.state);
   }
 
   componentWillMount() {
@@ -58,6 +57,11 @@ class App extends Component {
 
   handlePaginationSelect(event) {
     let offset = this.state.limit * event;
+    this.setState(
+      {
+        activePage: event
+      }
+    )
     if(event === 1)
     offset = 0;
     this.loadPokemon(`${this.props.baseUrl}pokemon?limit=${this.state.limit}&offset=${offset}`);
@@ -76,6 +80,13 @@ class App extends Component {
       <div>
         <Layout customCardsList={<PokeList listOfPokemon={this.state.pokemon} />}/>
         <Spinner spin={this.state.spin} />
+        <Pagination className="pagination-main"
+        hideOnSinglePage={true}
+        current={this.state.activePage}
+        pageSize={this.state.limit}
+        total={this.state.count}
+        onChange={this.handlePaginationSelect}
+        />
       </div>
     );
   }

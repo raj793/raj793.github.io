@@ -10,16 +10,18 @@
 
 .pagination-main {
   position: absolute;
-  left: 500px;
+  margin-left: 500px;
   top: 200px;
   z-index: 100;
-  padding-top: 400px;
+  margin-top: 375px;
 }
 
 .spinner {
-
-  color: aliceblue;
+  position: absolute;
+  top: 300px;
+  color: rgb(0, 0, 0);
 }
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

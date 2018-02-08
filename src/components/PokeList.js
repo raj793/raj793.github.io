@@ -1,5 +1,4 @@
 import React from 'react';
-import { ListGroup, ListGroupItem, Col } from 'react-bootstrap/lib/';
 import '../styles/Pokelist.css';
 import CustomCard from './CustomCard';
 
