@@ -28,6 +28,7 @@ class App extends Component {
     this.handleLimitChange = this.handleLimitChange.bind(this);
     this.handleModalOpen = this.handleModalOpen.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
+    this.pokemonStartIndexCalculator = this.pokemonStartIndexCalculator.bind(this);
   }
 
   async loadPokemon(url) {
@@ -41,7 +42,13 @@ class App extends Component {
       count: json.count,
       spin: false
       });
-      console.log(this.state);
+  }
+
+  pokemonStartIndexCalculator(currentPage, limit) {
+      if(currentPage === 0)
+      return 1;
+      else
+      return currentPage === 1 ? 1 : ((currentPage-1)*limit)+1;
   }
 
   componentWillMount() {
@@ -56,14 +63,14 @@ class App extends Component {
   }
 
   handlePaginationSelect(event) {
-    let offset = this.state.limit * event;
+    let offset = this.state.limit * (event-1);
     this.setState(
       {
         activePage: event
       }
     )
-    if(event === 1)
-    offset = 0;
+    // if(event === 1)
+    // offset = 0;
     this.loadPokemon(`${this.props.baseUrl}pokemon?limit=${this.state.limit}&offset=${offset}`);
   }
 
@@ -78,8 +85,12 @@ class App extends Component {
 
     return (
       <div>
-        <Layout customCardsList={<PokeList listOfPokemon={this.state.pokemon} />}/>
+
+        <Layout customCardsList={<PokeList listOfPokemon={this.state.pokemon} 
+        pokemonStartIndex={this.pokemonStartIndexCalculator(this.state.activePage, this.state.limit)}/>}/>
+        
         <Spinner spin={this.state.spin} />
+
         <Pagination className="pagination-main"
         hideOnSinglePage={true}
         current={this.state.activePage}
@@ -87,6 +98,7 @@ class App extends Component {
         total={this.state.count}
         onChange={this.handlePaginationSelect}
         />
+
       </div>
     );
   }

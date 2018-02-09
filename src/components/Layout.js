@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/layout-base.css';
 import '../styles/layout-grid.css';
 import { message } from 'antd';
+import { Input } from 'antd';
 import logo from '../media/pokedex.png';
 
 const info = ({cardList}) => {
@@ -15,6 +16,7 @@ const layout = ({customCardsList}) => {
                         <div className="header">
                                 <a className="btn-nav-about" onClick={info}>About</a>
                                 <img src={logo} className="nav-logo"/>
+                                <Input placeholder="Search..." className="input-nav-search"/>
                         </div>
                         <div className="card-content">
                                 {customCardsList}

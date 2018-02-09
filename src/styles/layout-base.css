@@ -52,3 +52,11 @@ body {
 .footer {
     background-color: black;
 }
+
+.input-nav-search {
+    display: inline;
+    position: absolute;
+    width: 400px;
+    top: 20px;
+    left: 500px;
+}
