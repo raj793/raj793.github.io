@@ -58,6 +58,7 @@ class App extends Component {
   handleModalOpen() {
     this.setState({showModal: true})
   }
+
   handleModalClose() {
     this.setState({showModal: false})
   }
@@ -69,8 +70,6 @@ class App extends Component {
         activePage: event
       }
     )
-    // if(event === 1)
-    // offset = 0;
     this.loadPokemon(`${this.props.baseUrl}pokemon?limit=${this.state.limit}&offset=${offset}`);
   }
 
